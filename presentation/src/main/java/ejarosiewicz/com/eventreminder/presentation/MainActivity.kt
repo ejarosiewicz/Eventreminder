@@ -1,20 +1,24 @@
 package ejarosiewicz.com.eventreminder.presentation
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import ejarosiewicz.com.eventreminder.presentation.R
-import ejarosiewicz.com.eventreminder.presentation.main.MainFragment
+import ejarosiewicz.com.eventreminder.presentation.di.activityModule
+import ejarosiewicz.com.eventreminder.presentation.navigator.Navigator
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.instance
 
-import kotlinx.android.synthetic.main.activity_main.*
+class MainActivity : AppCompatActivity(), KodeinAware {
 
-class MainActivity : AppCompatActivity() {
+    override val kodein = Kodein.lazy {
+        import(activityModule(this@MainActivity))
+    }
+
+    private val navigator: Navigator by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        navigator.goToMainScreen()
     }
 }
