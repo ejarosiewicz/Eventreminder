@@ -11,6 +11,10 @@ import ejarosiewicz.com.eventreminder.presentation.R
 
 class AddEventFragment: Fragment() {
 
+    companion object {
+        const val NAME = "Add"
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,

@@ -2,11 +2,11 @@ package ejarosiewicz.com.eventreminder.presentation.navigator
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import ejarosiewicz.com.eventreminder.presentation.R
 import ejarosiewicz.com.eventreminder.presentation.add.AddEventFragment
 import ejarosiewicz.com.eventreminder.presentation.main.MainFragment
 
-class FragmentNavigator(private val fragmentManager: FragmentManager): Navigator {
+class FragmentNavigator(private val fragmentManager: FragmentManager,
+                        private val containerProvider: ContainerProvider) : Navigator {
 
     override fun goToMainScreen() {
         goToFragment(MainFragment())
@@ -16,9 +16,8 @@ class FragmentNavigator(private val fragmentManager: FragmentManager): Navigator
         goToFragment(AddEventFragment())
     }
 
-    private fun goToFragment(fragment: Fragment){
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
-        transaction.commit()
-    }
+    private fun goToFragment(fragment: Fragment)  =
+            fragmentManager.beginTransaction()
+                    .add(containerProvider.containerId, fragment)
+                    .commit()
 }

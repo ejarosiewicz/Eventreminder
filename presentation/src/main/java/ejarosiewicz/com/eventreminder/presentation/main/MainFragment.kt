@@ -16,6 +16,10 @@ import org.kodein.di.generic.instance
 
 class MainFragment: Fragment(), KodeinAware {
 
+    companion object {
+        const val NAME = "Main"
+    }
+
     private val parentKodein by closestKodein()
 
     override val kodein = Kodein.lazy {
