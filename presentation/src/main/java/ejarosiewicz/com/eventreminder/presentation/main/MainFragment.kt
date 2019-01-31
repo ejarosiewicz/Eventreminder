@@ -34,6 +34,8 @@ class MainFragment: Fragment(), KodeinAware {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
+
+
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
