@@ -4,17 +4,16 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import com.nhaarman.mockitokotlin2.*
-import ejarosiewicz.com.eventreminder.presentation.main.MainFragment
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 
 class FragmentNavigatorTest {
+
+    private val mockContainerProvider: ContainerProvider = mock()
 
     private val mockFragmentTransaction: FragmentTransaction = mock {
         on { add(any<Int>(), any()) } doReturn (it)
         on { commit() } doReturn (1)
     }
-    private val mockContainerProvider: ContainerProvider = mock()
     private val mockFragmentManager: FragmentManager = mock {
         on { beginTransaction() } doReturn (mockFragmentTransaction)
     }
@@ -25,14 +24,17 @@ class FragmentNavigatorTest {
     fun goToMainScreen() {
         systemUnderTest.goToMainScreen()
 
-        verifyFragmentTransaction(MainFragment())
+        verifyFragmentTransaction("MainFragment")
     }
 
     @Test
     fun goToAddScreen() {
+        systemUnderTest.goToAddScreen()
+
+        verifyFragmentTransaction("AddEventFragment")
     }
 
-    private fun verifyFragmentTransaction(fragmentName: String) {
+    private fun verifyFragmentTransaction(expectedFragmentName: String) {
         val fragmentCaptor = argumentCaptor<Fragment>()
 
         verify(mockFragmentManager).beginTransaction()
@@ -40,9 +42,9 @@ class FragmentNavigatorTest {
         verify(mockFragmentTransaction).commit()
 
 
-        val actualClass = fragmentCaptor.firstValue::class
-        val actualname = actualClass.java.simpleName
+        val actualFragmentClass = fragmentCaptor.firstValue::class
+        val actualFragmentName = actualFragmentClass.java.simpleName
 
-        assert(expectedName == actualName)
+        assert(expectedFragmentName == actualFragmentName)
     }
 }

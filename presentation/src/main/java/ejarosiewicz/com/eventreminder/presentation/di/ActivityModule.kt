@@ -1,6 +1,5 @@
 package ejarosiewicz.com.eventreminder.presentation.di
 
-import android.app.Activity
 import android.support.v7.app.AppCompatActivity
 import ejarosiewicz.com.eventreminder.presentation.navigator.ContainerProvider
 import ejarosiewicz.com.eventreminder.presentation.navigator.DefaultContainerProvider
