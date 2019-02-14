@@ -4,7 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.action.ViewActions.typeText
+import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
@@ -45,8 +48,17 @@ class EventListTest  {
 
     @Test
     fun userAddsNewEvent() {
-        onView(withId(R.id.add_event))
+        val eventName = "Transmission"
+
+        onView(withId(R.id.addEvent))
                 .perform(click())
-        assertNotNull(activity)
+        onView(withId(R.id.name))
+                .perform(typeText(eventName))
+        onView(withId(R.id.addEvent))
+                .perform(click())
+
+
+        onView(withId(R.id.eventList))
+                .check(matches(withText(eventName)))
     }
 }
