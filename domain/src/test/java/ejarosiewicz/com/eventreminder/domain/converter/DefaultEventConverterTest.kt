@@ -1,9 +1,10 @@
-package ejarosiewicz.com.eventreminder.data.room.converter
+package ejarosiewicz.com.eventreminder.domain.converter
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import ejarosiewicz.com.eventreminder.data.Event
+import ejarosiewicz.com.eventreminder.data.room.converter.DefaultEventConverter
 import ejarosiewicz.com.eventreminder.data.room.pojo.EventEntity
+import ejarosiewicz.com.eventreminder.domain.data.Event
 import org.junit.Test
 
 class DefaultEventConverterTest {

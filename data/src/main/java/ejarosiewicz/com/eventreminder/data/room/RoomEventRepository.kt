@@ -1,21 +1,14 @@
 package ejarosiewicz.com.eventreminder.data.room
 
-import ejarosiewicz.com.eventreminder.data.Event
 import ejarosiewicz.com.eventreminder.data.EventRepository
-import ejarosiewicz.com.eventreminder.data.room.converter.EventConverter
 import ejarosiewicz.com.eventreminder.data.room.dao.EventDAO
+import ejarosiewicz.com.eventreminder.data.room.pojo.EventEntity
 
-class RoomEventRepository(private val dao: EventDAO,
-                          private val eventConverter: EventConverter) : EventRepository {
+class RoomEventRepository(private val dao: EventDAO) : EventRepository {
 
-    override fun create(event: Event) {
-        val entity = eventConverter.convert(event)
+    override fun create(entity: EventEntity) {
         dao.create(entity)
     }
 
-    override fun read(): List<Event> = dao
-            .read()
-            .map { entity -> eventConverter.convert(entity) }
-
-
+    override fun read(): List<EventEntity> = dao.read()
 }

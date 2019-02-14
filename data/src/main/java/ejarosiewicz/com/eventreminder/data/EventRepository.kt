@@ -1,9 +1,11 @@
 package ejarosiewicz.com.eventreminder.data
 
+import ejarosiewicz.com.eventreminder.data.room.pojo.EventEntity
+
 interface EventRepository {
 
-    fun create(event: Event)
+    fun create(entity: EventEntity)
 
-    fun read(): List<Event>
+    fun read(): List<EventEntity>
 
 }

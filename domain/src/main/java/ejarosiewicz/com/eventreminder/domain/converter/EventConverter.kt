@@ -1,7 +1,8 @@
-package ejarosiewicz.com.eventreminder.data.room.converter
+package ejarosiewicz.com.eventreminder.domain.converter
 
-import ejarosiewicz.com.eventreminder.data.Event
+
 import ejarosiewicz.com.eventreminder.data.room.pojo.EventEntity
+import ejarosiewicz.com.eventreminder.domain.data.Event
 
 interface EventConverter {
 
