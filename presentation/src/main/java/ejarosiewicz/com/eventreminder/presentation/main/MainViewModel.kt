@@ -10,6 +10,4 @@ class MainViewModel(private val navigator: Navigator) : ViewModel() {
     fun goToAddScreen() {
         navigator.goToAddScreen()
     }
-
-
 }

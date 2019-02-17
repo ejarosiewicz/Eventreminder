@@ -12,6 +12,9 @@ import org.kodein.di.generic.provider
 
 fun activityModule(activity: AppCompatActivity) = Kodein.Module("cipa", false) {
     bind<ContainerProvider>() with provider { DefaultContainerProvider()}
-    bind<Navigator>() with provider { FragmentNavigator(activity.supportFragmentManager, instance())}
+
+    bind<Navigator>() with provider { FragmentNavigator(
+            fragmentManager = activity.supportFragmentManager,
+            containerProvider = instance())}
     //bind<FragmentManagerFacade>() with provider { DefaultFragmentManagerFacade(activity.supportFragmentManager)}
 }

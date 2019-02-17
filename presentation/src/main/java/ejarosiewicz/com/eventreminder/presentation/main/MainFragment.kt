@@ -1,6 +1,5 @@
 package ejarosiewicz.com.eventreminder.presentation.main
 
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ejarosiewicz.com.eventreminder.presentation.R
-import ejarosiewicz.com.eventreminder.presentation.di.fragmentModule
 import ejarosiewicz.com.eventreminder.presentation.navigator.Navigator
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.kodein.di.Kodein
@@ -26,7 +24,7 @@ class MainFragment: Fragment(), KodeinAware {
     private val parentKodein by closestKodein()
 
     override val kodein = Kodein.lazy {
-        import(fragmentModule(this@MainFragment))
+        import(mainFragmentModule(this@MainFragment))
         extend(parentKodein)
     }
 

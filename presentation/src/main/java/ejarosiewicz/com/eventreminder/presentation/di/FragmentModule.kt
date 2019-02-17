@@ -9,4 +9,5 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
 fun fragmentModule(fragment: Fragment) = Kodein.Module("chuj", false) {
+
 }
