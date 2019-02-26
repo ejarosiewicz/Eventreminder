@@ -3,8 +3,7 @@ package ejarosiewicz.com.eventreminder.presentation.add
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import ejarosiewicz.com.eventreminder.domain.add.AddEventUseCase
-import ejarosiewicz.com.eventreminder.domain.data.Event
-import org.junit.Assert.*
+import ejarosiewicz.com.eventreminder.domain.entity.Event
 import org.junit.Test
 
 class AddEventViewModelTest{

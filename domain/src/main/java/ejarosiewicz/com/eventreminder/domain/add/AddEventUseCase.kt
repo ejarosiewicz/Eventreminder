@@ -1,6 +1,6 @@
 package ejarosiewicz.com.eventreminder.domain.add
 
-import ejarosiewicz.com.eventreminder.domain.data.Event
+import ejarosiewicz.com.eventreminder.domain.entity.Event
 
 interface AddEventUseCase {
 

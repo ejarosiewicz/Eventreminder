@@ -2,7 +2,7 @@ package ejarosiewicz.com.eventreminder.data.room.converter
 
 import ejarosiewicz.com.eventreminder.data.room.pojo.EventEntity
 import ejarosiewicz.com.eventreminder.domain.converter.EventConverter
-import ejarosiewicz.com.eventreminder.domain.data.Event
+import ejarosiewicz.com.eventreminder.domain.entity.Event
 
 class DefaultEventConverter: EventConverter {
 

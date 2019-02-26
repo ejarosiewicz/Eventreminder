@@ -1,26 +1,34 @@
 apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
-    
-
 
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
-
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
+    testImplementation  'com.willowtreeapps.assertk:assertk-jvm:0.13'
 
 }
