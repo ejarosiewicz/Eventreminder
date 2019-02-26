@@ -20,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    dynamicFeatures = [":async"]
+
+
 }
 
 dependencies {
@@ -31,6 +36,8 @@ dependencies {
     implementation "android.arch.lifecycle:viewmodel:1.1.1"
     implementation 'org.kodein.di:kodein-di-generic-jvm:6.0.1'
     implementation 'org.kodein.di:kodein-di-framework-android-support:6.0.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
