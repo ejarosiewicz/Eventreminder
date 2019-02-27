@@ -1,8 +1,8 @@
 package ejarosiewicz.com.async.converter
 
-import ejarosiewicz.com.async.Scheduler
+import ejarosiewicz.com.async.Thread
 
 interface ThreadConverter<T> {
 
-    fun convert(thread: Scheduler.Thread): T
+    fun convert(thread: Thread): T
 }

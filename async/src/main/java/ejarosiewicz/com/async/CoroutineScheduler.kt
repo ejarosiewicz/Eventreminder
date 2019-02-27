@@ -9,8 +9,8 @@ class CoroutineScheduler(private val threadConverter: ThreadConverter<CoroutineD
     private var job: Job? = null
 
     override fun <T> schedule(operation: () -> T,
-                              operationThread: Scheduler.Thread,
-                              resultThread: Scheduler.Thread,
+                              operationThread: Thread,
+                              resultThread: Thread,
                               onSuccess: (T) -> Unit) {
         val operationDispatcher = threadConverter.convert(operationThread)
         val resultDispatcher = threadConverter.convert(resultThread)
