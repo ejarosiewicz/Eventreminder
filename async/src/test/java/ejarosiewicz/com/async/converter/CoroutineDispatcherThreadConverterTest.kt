@@ -2,7 +2,7 @@ package ejarosiewicz.com.async.converter
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import ejarosiewicz.com.eventreminder.domain.async.Scheduler
+import ejarosiewicz.com.async.Scheduler
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.junit.Test

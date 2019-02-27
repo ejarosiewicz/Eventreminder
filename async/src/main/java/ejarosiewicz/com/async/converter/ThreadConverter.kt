@@ -1,6 +1,6 @@
 package ejarosiewicz.com.async.converter
 
-import ejarosiewicz.com.eventreminder.domain.async.Scheduler
+import ejarosiewicz.com.async.Scheduler
 
 interface ThreadConverter<T> {
 

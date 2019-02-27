@@ -1,6 +1,6 @@
 package ejarosiewicz.com.async.converter
 
-import ejarosiewicz.com.eventreminder.domain.async.Scheduler
+import ejarosiewicz.com.async.Scheduler
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 

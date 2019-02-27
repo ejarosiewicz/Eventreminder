@@ -29,6 +29,8 @@ android {
 
 dependencies {
     implementation project(':domain')
+    implementation project(':async')
+    implementation project(':data')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:support-core-utils:28.0.0"

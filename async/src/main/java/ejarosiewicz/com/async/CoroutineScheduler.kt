@@ -1,7 +1,6 @@
 package ejarosiewicz.com.async
 
 import ejarosiewicz.com.async.converter.ThreadConverter
-import ejarosiewicz.com.eventreminder.domain.async.Scheduler
 import kotlinx.coroutines.*
 
 class CoroutineScheduler(private val threadConverter: ThreadConverter<CoroutineDispatcher>)

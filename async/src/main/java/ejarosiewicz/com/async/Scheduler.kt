@@ -1,4 +1,4 @@
-package ejarosiewicz.com.eventreminder.domain.async
+package ejarosiewicz.com.async
 
 interface Scheduler {
 
