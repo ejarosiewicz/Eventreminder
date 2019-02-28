@@ -22,9 +22,6 @@ android {
     }
 
 
-    dynamicFeatures = [":async"]
-
-
 }
 
 dependencies {

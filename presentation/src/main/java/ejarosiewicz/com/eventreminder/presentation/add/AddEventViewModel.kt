@@ -6,9 +6,6 @@ import ejarosiewicz.com.async.Thread
 import ejarosiewicz.com.eventreminder.domain.add.AddEventUseCase
 import ejarosiewicz.com.eventreminder.domain.entity.Event
 import ejarosiewicz.com.eventreminder.presentation.navigator.Navigator
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
                         private val scheduler: Scheduler,
