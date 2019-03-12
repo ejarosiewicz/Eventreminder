@@ -7,9 +7,11 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-fun mainFragmentModule(fragment: Fragment) = Kodein.Module("main", false) {
+fun mainFragmentModule() = Kodein.Module("main", false) {
 
     bind<ViewModelProvider.Factory>() with provider {
-        MainViewModelFactory(navigator = instance())
+        MainViewModelFactory(navigator = instance(),
+                scheduler = instance(),
+                readEventsUseCase = instance())
     }
 }

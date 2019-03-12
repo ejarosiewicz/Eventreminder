@@ -9,7 +9,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-fun addEventFragmentModule() = Kodein.Module("main", false) {
+fun addEventFragmentModule() = Kodein.Module("add", false) {
 
     bind<AddEventUseCase>() with provider { DefaultAddEventUseCase(eventRepository = instance()) }
 
