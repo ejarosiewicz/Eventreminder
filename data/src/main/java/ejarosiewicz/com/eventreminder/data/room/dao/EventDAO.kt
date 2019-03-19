@@ -9,7 +9,7 @@ interface EventDAO {
     @Insert
     fun create(event: EventEntity)
 
-    @Query("SELECT * FROM event WHERE event_id = id")
+    @Query("SELECT * FROM event WHERE event_id = :id")
     fun read(id: String): EventEntity
 
     @Query("SELECT * FROM event")

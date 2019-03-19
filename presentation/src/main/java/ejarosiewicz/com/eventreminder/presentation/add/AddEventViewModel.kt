@@ -11,8 +11,15 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
                         private val scheduler: Scheduler,
                         private val navigator: Navigator) : ViewModel() {
 
+    var eventName: String = ""
+
     override fun onCleared() {
         scheduler.cancel()
+    }
+
+    fun addEvent(){
+        val event = Event(name = eventName)
+        addEvent(event)
     }
 
     fun addEvent(event: Event) {

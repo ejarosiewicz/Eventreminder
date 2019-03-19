@@ -12,6 +12,9 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.closestKodein
 import org.kodein.di.generic.instance
+import android.databinding.DataBindingUtil
+
+
 
 class AddEventFragment : Fragment(), KodeinAware {
 
@@ -40,6 +43,12 @@ class AddEventFragment : Fragment(), KodeinAware {
                 .get(AddEventViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_add, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
 }

@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import ejarosiewicz.com.eventreminder.domain.entity.Event
 import ejarosiewicz.com.eventreminder.presentation.R
-import ejarosiewicz.com.eventreminder.presentation.navigator.Navigator
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -18,10 +18,6 @@ import org.kodein.di.android.support.closestKodein
 import org.kodein.di.generic.instance
 
 class MainFragment: Fragment(), KodeinAware {
-
-    companion object {
-        const val NAME = "Main"
-    }
 
     private val parentKodein by closestKodein()
 
@@ -33,6 +29,8 @@ class MainFragment: Fragment(), KodeinAware {
     private val viewModelFactory: ViewModelProvider.Factory by instance()
 
     private lateinit var viewModel: MainViewModel
+
+    private var  eventsAdapter = EventsAdapter()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -49,6 +47,7 @@ class MainFragment: Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        eventList.adapter = eventsAdapter
         viewModel.stateData.observe(this, Observer{state -> onStateReceived(state)} )
     }
 
@@ -59,7 +58,7 @@ class MainFragment: Fragment(), KodeinAware {
     }
 
     private fun fetchEvents(events: List<Event>) {
-
+        eventsAdapter.items = events
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

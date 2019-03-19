@@ -11,8 +11,6 @@ import org.kodein.di.generic.provider
 
 fun addEventFragmentModule() = Kodein.Module("add", false) {
 
-    bind<AddEventUseCase>() with provider { DefaultAddEventUseCase(eventRepository = instance()) }
-
     bind<ViewModelProvider.Factory>() with provider {
         AddEventViewModelFactory(
                 addEventUseCase = instance(),
