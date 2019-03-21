@@ -8,6 +8,7 @@ import ejarosiewicz.com.eventreminder.presentation.main.MainFragment
 class FragmentNavigator(private val fragmentManager: FragmentManager,
                         private val containerProvider: ContainerProvider) : Navigator {
 
+
     override fun goToMainScreen() {
         goToFragment(MainFragment())
     }
@@ -16,8 +17,13 @@ class FragmentNavigator(private val fragmentManager: FragmentManager,
         goToFragment(AddEventFragment())
     }
 
-    private fun goToFragment(fragment: Fragment)  =
+    private fun goToFragment(fragment: Fragment) =
             fragmentManager.beginTransaction()
                     .add(containerProvider.containerId, fragment)
+                    .addToBackStack(null)
                     .commit()
+
+    override fun goBack() {
+        fragmentManager.popBackStackImmediate()
+    }
 }

@@ -58,7 +58,7 @@ class AddEventViewModelTest {
         )
         onSuccessCaptor.firstValue.invoke(Unit)
 
-        verify(mockNavigator).goToMainScreen()
+        verify(mockNavigator).goBack()
     }
 
     companion object {

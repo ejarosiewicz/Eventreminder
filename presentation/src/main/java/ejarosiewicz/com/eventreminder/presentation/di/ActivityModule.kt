@@ -1,6 +1,6 @@
 package ejarosiewicz.com.eventreminder.presentation.di
 
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.FragmentActivity
 import ejarosiewicz.com.eventreminder.presentation.navigator.ContainerProvider
 import ejarosiewicz.com.eventreminder.presentation.navigator.DefaultContainerProvider
 import ejarosiewicz.com.eventreminder.presentation.navigator.FragmentNavigator
@@ -10,7 +10,7 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 
-fun activityModule(activity: AppCompatActivity) = Kodein.Module("cipa", false) {
+fun activityModule(activity: FragmentActivity) = Kodein.Module("cipa", true) {
 
     bind<ContainerProvider>() with provider { DefaultContainerProvider()}
 

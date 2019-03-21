@@ -32,7 +32,7 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
     }
 
     private fun onEventAdd() {
-        navigator.goToMainScreen()
+        navigator.goBack()
     }
 
 }

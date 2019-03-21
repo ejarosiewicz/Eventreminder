@@ -16,14 +16,18 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.closestKodein
 import org.kodein.di.generic.instance
+import android.support.v7.widget.LinearLayoutManager
+import ejarosiewicz.com.eventreminder.presentation.di.fragmentModule
+
 
 class MainFragment: Fragment(), KodeinAware {
 
     private val parentKodein by closestKodein()
 
     override val kodein = Kodein.lazy {
-        import(mainFragmentModule())
         extend(parentKodein)
+        import(fragmentModule(this@MainFragment))
+        import(mainFragmentModule())
     }
 
     private val viewModelFactory: ViewModelProvider.Factory by instance()
@@ -48,6 +52,8 @@ class MainFragment: Fragment(), KodeinAware {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         eventList.adapter = eventsAdapter
+        val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        eventList.layoutManager = linearLayoutManager
         viewModel.stateData.observe(this, Observer{state -> onStateReceived(state)} )
     }
 
@@ -59,10 +65,12 @@ class MainFragment: Fragment(), KodeinAware {
 
     private fun fetchEvents(events: List<Event>) {
         eventsAdapter.items = events
+        eventsAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        addEvent.setOnClickListener { viewModel.goToAddScreen()}
+        addEvent.setOnClickListener { viewModel.goToAddScreen() }
+        viewModel.loadEvents()
     }
 }

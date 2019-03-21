@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ejarosiewicz.com.eventreminder.presentation.R
+import ejarosiewicz.com.eventreminder.presentation.di.fragmentModule
+import kotlinx.android.synthetic.main.fragment_add.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.closestKodein
 import org.kodein.di.generic.instance
-import android.databinding.DataBindingUtil
-
 
 
 class AddEventFragment : Fragment(), KodeinAware {
@@ -25,8 +25,9 @@ class AddEventFragment : Fragment(), KodeinAware {
     private val parentKodein by closestKodein()
 
     override val kodein = Kodein.lazy {
-        import(addEventFragmentModule())
         extend(parentKodein)
+        import(fragmentModule(this@AddEventFragment))
+        import(addEventFragmentModule())
     }
 
     private val viewModelFactory: ViewModelProvider.Factory by instance()
@@ -45,10 +46,21 @@ class AddEventFragment : Fragment(), KodeinAware {
         return inflater.inflate(R.layout.fragment_add, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+//        activity?.let {
+//            val viewDataBinding = DataBindingUtil.setContentView<ViewDataBinding>(it, R.layout.fragment_add)
+//            viewDataBinding.setVariable(BR.viewmodel, viewModel)
+//        }
 
+        addButton.setOnClickListener {
+            viewModel.addEvent()
+        }
+    }
 
+    private fun onAddClick() {
+        viewModel.addEvent()
+        childFragmentManager.popBackStackImmediate()
     }
 
 }
