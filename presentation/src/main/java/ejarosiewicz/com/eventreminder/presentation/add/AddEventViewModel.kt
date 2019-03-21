@@ -1,6 +1,7 @@
 package ejarosiewicz.com.eventreminder.presentation.add
 
 import android.arch.lifecycle.ViewModel
+import android.support.v4.app.FragmentManager
 import ejarosiewicz.com.async.Scheduler
 import ejarosiewicz.com.async.Thread
 import ejarosiewicz.com.eventreminder.domain.add.AddEventUseCase
@@ -12,6 +13,7 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
                         private val navigator: Navigator) : ViewModel() {
 
     var eventName: String = ""
+    lateinit var fragmentManager: FragmentManager
 
     override fun onCleared() {
         scheduler.cancel()
@@ -32,7 +34,7 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
     }
 
     private fun onEventAdd() {
-        navigator.goBack()
+        fragmentManager.popBackStack()
     }
 
 }

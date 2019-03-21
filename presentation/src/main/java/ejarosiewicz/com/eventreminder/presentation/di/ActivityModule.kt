@@ -14,7 +14,7 @@ fun activityModule(activity: FragmentActivity) = Kodein.Module("cipa", true) {
 
     bind<ContainerProvider>() with provider { DefaultContainerProvider()}
 
-    bind<Navigator>() with provider { FragmentNavigator(
+    bind<Navigator>("activity") with provider { FragmentNavigator(
             fragmentManager = activity.supportFragmentManager,
             containerProvider = instance())}
     //bind<FragmentManagerFacade>() with provider { DefaultFragmentManagerFacade(activity.supportFragmentManager)}

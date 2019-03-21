@@ -2,14 +2,16 @@ package ejarosiewicz.com.eventreminder.presentation.add
 
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ejarosiewicz.com.eventreminder.presentation.BR
 import ejarosiewicz.com.eventreminder.presentation.R
 import ejarosiewicz.com.eventreminder.presentation.di.fragmentModule
-import kotlinx.android.synthetic.main.fragment_add.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.closestKodein
@@ -48,19 +50,11 @@ class AddEventFragment : Fragment(), KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        activity?.let {
-//            val viewDataBinding = DataBindingUtil.setContentView<ViewDataBinding>(it, R.layout.fragment_add)
-//            viewDataBinding.setVariable(BR.viewmodel, viewModel)
-//        }
-
-        addButton.setOnClickListener {
-            viewModel.addEvent()
+        activity?.let {
+            val viewDataBinding = DataBindingUtil.setContentView<ViewDataBinding>(it, R.layout.fragment_add)
+            viewModel.fragmentManager = childFragmentManager
+            viewDataBinding.setVariable(BR.viewmodel, viewModel)
         }
-    }
-
-    private fun onAddClick() {
-        viewModel.addEvent()
-        childFragmentManager.popBackStackImmediate()
     }
 
 }

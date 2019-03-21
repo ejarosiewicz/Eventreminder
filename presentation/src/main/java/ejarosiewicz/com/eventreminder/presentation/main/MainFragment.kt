@@ -68,6 +68,11 @@ class MainFragment: Fragment(), KodeinAware {
         eventsAdapter.notifyDataSetChanged()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadEvents()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         addEvent.setOnClickListener { viewModel.goToAddScreen() }

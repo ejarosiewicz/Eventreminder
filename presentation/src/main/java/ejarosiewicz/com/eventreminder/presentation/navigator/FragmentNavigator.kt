@@ -19,11 +19,11 @@ class FragmentNavigator(private val fragmentManager: FragmentManager,
 
     private fun goToFragment(fragment: Fragment) =
             fragmentManager.beginTransaction()
-                    .add(containerProvider.containerId, fragment)
                     .addToBackStack(null)
+                    .add(containerProvider.containerId, fragment)
                     .commit()
 
     override fun goBack() {
-        fragmentManager.popBackStackImmediate()
+        fragmentManager.popBackStack()
     }
 }
