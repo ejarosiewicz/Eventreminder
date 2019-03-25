@@ -14,7 +14,6 @@ fun addEventFragmentModule() = Kodein.Module("add", false) {
     bind<ViewModelProvider.Factory>() with provider {
         AddEventViewModelFactory(
                 addEventUseCase = instance(),
-                scheduler = instance(),
-                navigator = instance("fragment"))
+                scheduler = instance())
     }
 }

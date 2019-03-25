@@ -22,9 +22,7 @@ class MainActivity : FragmentActivity(), KodeinAware {
         import(domainModule())
     }
 
-
-
-    private val navigator: Navigator by instance("activity")
+    private val navigator: Navigator by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

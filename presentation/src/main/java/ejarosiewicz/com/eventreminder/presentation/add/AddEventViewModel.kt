@@ -1,5 +1,6 @@
 package ejarosiewicz.com.eventreminder.presentation.add
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.support.v4.app.FragmentManager
 import ejarosiewicz.com.async.Scheduler
@@ -9,17 +10,17 @@ import ejarosiewicz.com.eventreminder.domain.entity.Event
 import ejarosiewicz.com.eventreminder.presentation.navigator.Navigator
 
 class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
-                        private val scheduler: Scheduler,
-                        private val navigator: Navigator) : ViewModel() {
+                        private val scheduler: Scheduler) : ViewModel() {
 
     var eventName: String = ""
-    lateinit var fragmentManager: FragmentManager
+
+    val stateData = MutableLiveData<AddState>()
 
     override fun onCleared() {
         scheduler.cancel()
     }
 
-    fun addEvent(){
+    fun addEvent() {
         val event = Event(name = eventName)
         addEvent(event)
     }
@@ -34,7 +35,7 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
     }
 
     private fun onEventAdd() {
-        fragmentManager.popBackStack()
+        stateData.value = AddState.EVENT_ADDED
     }
 
 }

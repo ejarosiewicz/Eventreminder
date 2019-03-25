@@ -7,9 +7,8 @@ import ejarosiewicz.com.eventreminder.domain.add.AddEventUseCase
 import ejarosiewicz.com.eventreminder.presentation.navigator.Navigator
 
 class AddEventViewModelFactory(private val addEventUseCase: AddEventUseCase,
-                               private val navigator: Navigator,
                                private val scheduler: Scheduler) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-            AddEventViewModel(addEventUseCase, scheduler, navigator) as T
+            AddEventViewModel(addEventUseCase, scheduler) as T
 }

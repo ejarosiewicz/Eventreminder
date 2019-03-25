@@ -1,5 +1,6 @@
 package ejarosiewicz.com.eventreminder.presentation.add
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -52,9 +53,19 @@ class AddEventFragment : Fragment(), KodeinAware {
         super.onActivityCreated(savedInstanceState)
         activity?.let {
             val viewDataBinding = DataBindingUtil.setContentView<ViewDataBinding>(it, R.layout.fragment_add)
-            viewModel.fragmentManager = childFragmentManager
             viewDataBinding.setVariable(BR.viewmodel, viewModel)
         }
+        viewModel.stateData.observe(this, Observer{state -> onStateReceived(state)} )
+    }
+
+    private fun onStateReceived(state: AddState?) {
+        when (state){
+            AddState.EVENT_ADDED -> onEventAdded()
+        }
+    }
+
+    private fun onEventAdded() {
+        activity?.finish()
     }
 
 }
