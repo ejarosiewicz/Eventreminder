@@ -8,9 +8,12 @@ import org.junit.Test
 
 class FragmentNavigatorTest {
 
-    private val mockContainerProvider: ContainerProvider = mock()
+    private val mockContainerProvider: ContainerProvider = mock{
+        on {containerId} doReturn -1
+    }
 
     private val mockFragmentTransaction: FragmentTransaction = mock {
+        on { addToBackStack(null) } doReturn (it)
         on { add(any<Int>(), any()) } doReturn (it)
         on { commit() } doReturn (1)
     }
