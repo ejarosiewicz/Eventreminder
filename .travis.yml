@@ -15,7 +15,7 @@ android:
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
  before_install:
-    - yes | sdkmanager "platforms;android-$ANDROID_API_LEVEL"
+    - yes | sdkmanager --licenses
  script:
       - ./gradlew build assembleAndroidTest
       - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
