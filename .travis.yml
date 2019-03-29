@@ -19,7 +19,12 @@ android:
     - android-sdk-license-.+
     - google-gdk-license-.+
  before_install:
-    - yes | ./sdkmanager --licenses
+    - yes | sdkmanager --verbose "build-tools;28.0.3"
+    - yes | sdkmanager --verbose "platform-tools"
+    - yes | sdkmanager --verbose "tools"
+    - yes | sdkmanager --verbose "platforms;android-28"
+    - yes | sdkmanager --verbose "system-images;android-24;default;armeabi-v7a"
+    - yes | sdkmanager --licenses
  script:
       - ./gradlew build assembleAndroidTest
       - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
