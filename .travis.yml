@@ -11,6 +11,7 @@ android:
     - platform-tools
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     - android-$ANDROID_API_LEVEL
+    - android-27
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
