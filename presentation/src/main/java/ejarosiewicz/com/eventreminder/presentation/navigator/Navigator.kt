@@ -4,4 +4,5 @@ interface Navigator {
 
     fun goToAddScreen()
     fun goToMainScreen()
+    fun goBack()
 }

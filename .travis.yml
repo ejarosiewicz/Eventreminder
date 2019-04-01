@@ -1,0 +1,37 @@
+language: android
+jdk: oraclejdk8
+env:
+ global:
+    - ANDROID_API_LEVEL=28
+    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+
+android:
+ components:
+    - tools
+    - platform-tools
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - android-27
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+    - sys-img-armeabi-v7a-android-27
+ licenses:
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+ before_install:
+    - yes | sdkmanager --verbose "build-tools;28.0.3"
+    - yes | sdkmanager --verbose "platform-tools"
+    - yes | sdkmanager --verbose "tools"
+    - yes | sdkmanager --verbose "platforms;android-27"
+    - yes | sdkmanager --verbose "platforms;android-28"
+    - yes | sdkmanager --verbose "system-images;android-27;default;armeabi-v7a"
+    - yes | sdkmanager --licenses
+ script:
+      - ./gradlew build assembleAndroidTest
+      - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7
+      - emulator -avd test -no-skin -no-audio -no-window &
+      - android-wait-for-emulator
+      - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+      - ./gradlew connectedCheck

@@ -6,10 +6,10 @@ import ejarosiewicz.com.eventreminder.data.room.pojo.EventEntity
 @Dao
 interface EventDAO {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun create(event: EventEntity)
 
-    @Query("SELECT * FROM event WHERE event_id = id")
+    @Query("SELECT * FROM event WHERE event_id = :id")
     fun read(id: String): EventEntity
 
     @Query("SELECT * FROM event")

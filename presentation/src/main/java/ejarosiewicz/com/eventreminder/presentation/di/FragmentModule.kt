@@ -10,4 +10,7 @@ import org.kodein.di.generic.provider
 
 fun fragmentModule(fragment: Fragment) = Kodein.Module("chuj", false) {
 
+    bind<Navigator>("fragment") with provider { FragmentNavigator(
+            fragmentManager = fragment.childFragmentManager,
+            containerProvider = instance())}
 }
