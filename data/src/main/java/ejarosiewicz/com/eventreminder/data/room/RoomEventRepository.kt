@@ -9,6 +9,8 @@ import ejarosiewicz.com.eventreminder.domain.entity.Event
 
 class RoomEventRepository(private val dao: EventDAO,
                           private val eventConverter: EventConverter) : EventRepository {
+
+
     override fun create(event: Event) {
         val entity = eventConverter.convert(event)
         dao.create(entity)
@@ -17,4 +19,9 @@ class RoomEventRepository(private val dao: EventDAO,
     override fun read(): List<Event> =
             dao.read()
                     .map { entity -> eventConverter.convert(entity) }
+
+    override fun delete(event: Event) {
+        val entity = eventConverter.convert(event)
+        dao.delete(entity)
+    }
 }
