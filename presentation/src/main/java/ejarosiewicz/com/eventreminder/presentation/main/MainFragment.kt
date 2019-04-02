@@ -51,6 +51,7 @@ class MainFragment: Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        eventsAdapter.onDeleteListener = {eventId, name -> }
         eventList.adapter = eventsAdapter
         val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         eventList.layoutManager = linearLayoutManager
