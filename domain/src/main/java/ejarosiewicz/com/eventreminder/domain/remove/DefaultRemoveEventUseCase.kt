@@ -5,7 +5,7 @@ import ejarosiewicz.com.eventreminder.domain.entity.Event
 
 class DefaultRemoveEventUseCase(private val eventRepository: EventRepository) : RemoveEventUseCase {
 
-    override fun removeEvent(event: Event) {
-        eventRepository.delete(event)
+    override fun removeEvent(eventId: Long) {
+        eventRepository.delete(eventId)
     }
 }

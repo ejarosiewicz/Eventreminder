@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="description">Description</string>
     <string name="title_async">Async</string>
+    <string name="want_to_remove_event">Are you sure want to remove %s?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

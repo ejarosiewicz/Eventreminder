@@ -8,6 +8,6 @@ interface EventRepository {
 
     fun read(): List<Event>
 
-    fun delete(event: Event)
+    fun delete(eventId: Long)
 
 }

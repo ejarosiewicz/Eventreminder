@@ -38,8 +38,12 @@ class RoomEventRepositoryTest {
 
     @Test
     fun `Should delete new entity`() {
-        systemUnderTest.delete(DUMMY_EVENT)
+        systemUnderTest.delete(DUMMY_EVENT_ID)
 
-        verify(mockDao).delete(DUMMY_EVENT_ENTITY)
+        verify(mockDao).delete(DUMMY_EVENT_ID)
+    }
+
+    companion object {
+        private const val DUMMY_EVENT_ID = 123L
     }
 }

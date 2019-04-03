@@ -9,8 +9,8 @@ interface EventDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun create(event: EventEntity)
 
-    @Query("SELECT * FROM event WHERE event_id = :id")
-    fun read(id: String): EventEntity
+    @Query("SELECT * FROM event WHERE event_id = :eventId")
+    fun read(eventId: String): EventEntity
 
     @Query("SELECT * FROM event")
     fun read(): List<EventEntity>
@@ -18,6 +18,6 @@ interface EventDAO {
     @Update
     fun update(event: EventEntity)
 
-    @Delete
-    fun delete(event: EventEntity)
+    @Query("DELETE FROM event WHERE event_id = :eventId")
+    fun delete(eventId: Long)
 }

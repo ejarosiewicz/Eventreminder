@@ -11,6 +11,7 @@ fun mainFragmentModule() = Kodein.Module("main", false) {
     bind<ViewModelProvider.Factory>() with provider {
         MainViewModelFactory(navigator = instance(),
                 scheduler = instance(),
-                readEventsUseCase = instance())
+                readEventsUseCase = instance(),
+                removeEventUseCase = instance())
     }
 }

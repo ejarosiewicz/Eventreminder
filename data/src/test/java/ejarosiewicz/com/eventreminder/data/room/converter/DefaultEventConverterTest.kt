@@ -34,6 +34,7 @@ class DefaultEventConverterTest{
     companion object {
 
         val EMPTY_ENTITY = EventEntity(
+                eventId = 123,
                 name = null
         )
     }
