@@ -11,6 +11,7 @@ class DefaultEventConverter: EventConverter {
     )
 
     override fun convert(entity: EventEntity): Event = Event(
+            id = entity.eventId ?: -1,
             name = entity.name ?: ""
     )
 }

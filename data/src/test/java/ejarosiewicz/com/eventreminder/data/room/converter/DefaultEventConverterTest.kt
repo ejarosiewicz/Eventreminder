@@ -21,6 +21,7 @@ class DefaultEventConverterTest{
     fun `Should convert entity to event`(){
         val expectedEvent = systemUnderTest.convert(DUMMY_EVENT_ENTITY)
 
+        assertThat(expectedEvent.id).isEqualTo(DUMMY_EVENT_ENTITY.eventId)
         assertThat(expectedEvent.name).isEqualTo(DUMMY_EVENT_ENTITY.name)
     }
 
@@ -28,12 +29,14 @@ class DefaultEventConverterTest{
     fun `Should convert empty entity to event with default values`(){
         val expectedEvent = systemUnderTest.convert(EMPTY_ENTITY)
 
+        assertThat(expectedEvent.id).isEqualTo(-1L)
         assertThat(expectedEvent.name).isEqualTo("")
     }
 
     companion object {
 
         val EMPTY_ENTITY = EventEntity(
+                eventId = null,
                 name = null
         )
     }
