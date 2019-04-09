@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import ejarosiewicz.com.eventreminder.domain.entity.Event
 
-class EventsAdapter(var onDeleteListener: (Long, String) -> Unit) : RecyclerView.Adapter<EventHolder>() {
+class EventsAdapter : RecyclerView.Adapter<EventHolder>() {
 
     var items: List<Event> = emptyList()
 
@@ -20,6 +20,5 @@ class EventsAdapter(var onDeleteListener: (Long, String) -> Unit) : RecyclerView
 
     override fun onBindViewHolder(holder: EventHolder, position: Int) {
         holder.name.text = items[position].name
-        holder.name.setOnClickListener { onDeleteListener(items[position].id, items[position].name) }
     }
 }
