@@ -6,4 +6,6 @@
     <string name="want_to_remove_event">Are you sure want to remove %s?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 </resources>

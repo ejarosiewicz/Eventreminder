@@ -1,5 +1,7 @@
 package ejarosiewicz.com.eventreminder.presentation.add
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -17,6 +19,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.support.closestKodein
 import org.kodein.di.generic.instance
+import org.joda.time.DateTime
 
 
 class AddEventFragment : Fragment(), KodeinAware {
@@ -55,13 +58,34 @@ class AddEventFragment : Fragment(), KodeinAware {
             val viewDataBinding = DataBindingUtil.setContentView<ViewDataBinding>(it, R.layout.fragment_add)
             viewDataBinding.setVariable(BR.viewmodel, viewModel)
         }
-        viewModel.stateData.observe(this, Observer{state -> onStateReceived(state)} )
+        viewModel.stateData.observe(this, Observer { state -> onStateReceived(state) })
     }
 
     private fun onStateReceived(state: AddState?) {
-        when (state){
-            AddState.EVENT_ADDED -> onEventAdded()
+        when (state) {
+            StateEventAdded -> onEventAdded()
+            is StateOpenDatePicker -> openDatePicker(state.year, state.month, state.day)
         }
+    }
+
+    private fun openDatePicker(year: Int, month: Int, day: Int) {
+        val date = DateTime()
+        val x = DatePickerDialog(context,
+                DatePickerDialog.OnDateSetListener { view, pickedYear, monthOfYear, dayOfMonth ->
+                   // viewModel.setDate(pickedYear, monthOfYear, dayOfMonth)
+                },
+                year, month, day)
+        x.show()
+    }
+    private fun openTimePicker(hour: Int, minute: Int) {
+        val date = DateTime()
+        val x = TimePickerDialog(context,
+                TimePickerDialog.OnTimeSetListener { view, pickedHour, pickedMinute ->
+                    //todo
+                },
+                date.hourOfDay, date.minuteOfHour, true
+        )
+        x.show()
     }
 
     private fun onEventAdded() {

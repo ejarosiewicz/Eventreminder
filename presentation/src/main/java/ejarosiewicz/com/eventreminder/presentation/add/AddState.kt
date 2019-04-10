@@ -1,5 +1,10 @@
 package ejarosiewicz.com.eventreminder.presentation.add
 
-enum class AddState {
-    EVENT_ADDED
-}
+sealed class AddState
+object StateEventAdded : AddState()
+data class StateOpenDatePicker(val year: Int,
+                               val month: Int,
+                               val day: Int) : AddState()
+
+data class StateOpenTimePicker(val hour: Int,
+                               val minute: Int) : AddState()
