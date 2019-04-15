@@ -8,5 +8,6 @@ import android.arch.persistence.room.PrimaryKey
 data class EventEntity(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "event_id")var eventId: Long? = null,
-        var name: String?
+        var name: String?,
+        var timestamp: Long?
 )

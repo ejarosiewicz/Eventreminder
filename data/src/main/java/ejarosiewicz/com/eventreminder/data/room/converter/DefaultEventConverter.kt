@@ -7,11 +7,13 @@ import ejarosiewicz.com.eventreminder.domain.entity.Event
 class DefaultEventConverter: EventConverter {
 
     override fun convert(event: Event): EventEntity = EventEntity(
-            name = event.name
+            name = event.name,
+            timestamp = event.timestamp
     )
 
     override fun convert(entity: EventEntity): Event = Event(
             id = entity.eventId ?: -1,
-            name = entity.name ?: ""
+            name = entity.name.orEmpty(),
+            timestamp = entity.timestamp ?: -1
     )
 }

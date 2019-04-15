@@ -29,6 +29,14 @@ class AddEventViewModelTest {
         on { day } doReturn (SAMPLE_DAY)
         on { hour } doReturn (SAMPLE_HOUR)
         on { minute } doReturn (SAMPLE_MINUTE)
+        on {
+            provideTimestamp(
+                    year = SAMPLE_YEAR,
+                    month = SAMPLE_MONTH,
+                    day = SAMPLE_DAY,
+                    hour = SAMPLE_HOUR,
+                    minute = SAMPLE_MINUTE)
+        } doReturn (SAMPLE_TIMESTAMP)
     }
 
     private val mockStateObserver: Observer<AddState> = mock()
@@ -138,13 +146,13 @@ class AddEventViewModelTest {
     }
 
     companion object {
-        val SAMPLE_EVENT = Event(-1, "SAMPLE")
-
-        val SAMPLE_DAY = 13
-        val SAMPLE_MONTH = 10
-        val SAMPLE_YEAR = 2173
-        val SAMPLE_HOUR = 12
-        val SAMPLE_MINUTE = 23
+        const val SAMPLE_TIMESTAMP = 1234545667L
+        val SAMPLE_EVENT = Event(-1, "SAMPLE", SAMPLE_TIMESTAMP)
+        const val SAMPLE_DAY = 13
+        const val SAMPLE_MONTH = 10
+        const val SAMPLE_YEAR = 2173
+        const val SAMPLE_HOUR = 12
+        const val SAMPLE_MINUTE = 23
 
     }
 }

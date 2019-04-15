@@ -15,7 +15,6 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
     var eventName: String = ""
     var eventDate: String = ""
     var eventTime: String = ""
-    var eventTimeStamp: Long = -1L
 
     private var year: Int = actualDateProvider.year
     private var month: Int = actualDateProvider.month
@@ -30,7 +29,14 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
     }
 
     fun addEvent() {
-        val event = Event(name = eventName)
+        val event = Event(name = eventName,
+                timestamp = actualDateProvider.provideTimestamp(
+                        year = year,
+                        month = month,
+                        day = day,
+                        hour = hour,
+                        minute = minute
+                ))
         addEvent(event)
     }
 
