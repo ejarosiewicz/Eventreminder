@@ -2,6 +2,8 @@ package ejarosiewicz.com.eventreminder.presentation.add
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.Bindable
+import android.databinding.ObservableField
 import ejarosiewicz.com.async.Scheduler
 import ejarosiewicz.com.async.Thread
 import ejarosiewicz.com.eventreminder.domain.add.AddEventUseCase
@@ -13,8 +15,8 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
                         private val actualDateProvider: ActualDateProvider) : ViewModel() {
 
     var eventName: String = ""
-    var eventDate: String = ""
-    var eventTime: String = ""
+    var eventDate = ObservableField<String>("")
+    var eventTime = ObservableField<String>("")
 
     private var year: Int = actualDateProvider.year
     private var month: Int = actualDateProvider.month
@@ -63,14 +65,16 @@ class AddEventViewModel(private val addEventUseCase: AddEventUseCase,
 
     fun setDate(year: Int, month: Int, day: Int) {
         this.year = year
-        this.month = month
+        this.month = fixedMonth(month)
         this.day = day
-        eventDate = "$year-$month-$day"
+        eventDate.set("${this.year}-${this.month}-${this.day}")
     }
+
+    private fun fixedMonth(month: Int): Int = month +1
 
     fun setTime(hour: Int, minute: Int) {
         this.hour = hour
         this.minute = minute
-        eventTime = "$hour:$minute"
+        eventTime.set("$hour:$minute")
     }
 }

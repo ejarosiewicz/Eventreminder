@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:hint="@string/date"
             android:text="@={viewmodel.eventDate}"
             android:gravity="center"
             app:layout_constrainedWidth="true"
@@ -58,10 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:hint="@string/time"
             android:ems="7"
             android:gravity="center"
-            android:text="@={viewmodel.eventName}"
+            android:text="@={viewmodel.eventTime}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -70,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:onClick="@{() -> viewmodel.onDatePickerOpened()}"
+            android:onClick="@{() -> viewmodel.onTimePickerOpened()}"
             android:text="choose"
             app:layout_constraintEnd_toEndOf="@+id/time"
             app:layout_constraintStart_toStartOf="@+id/time"

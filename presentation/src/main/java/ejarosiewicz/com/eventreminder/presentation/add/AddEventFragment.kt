@@ -6,6 +6,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
+import android.databinding.Observable
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -65,25 +66,25 @@ class AddEventFragment : Fragment(), KodeinAware {
         when (state) {
             StateEventAdded -> onEventAdded()
             is StateOpenDatePicker -> openDatePicker(state.year, state.month, state.day)
+            is StateOpenTimePicker -> openTimePicker(state.hour, state.minute)
         }
     }
 
     private fun openDatePicker(year: Int, month: Int, day: Int) {
         val date = DateTime()
         val x = DatePickerDialog(context,
-                DatePickerDialog.OnDateSetListener { view, pickedYear, monthOfYear, dayOfMonth ->
-                   // viewModel.setDate(pickedYear, monthOfYear, dayOfMonth)
+                DatePickerDialog.OnDateSetListener { view, pickedYear, pickedMonth, pickedDay ->
+                   viewModel.setDate(pickedYear, pickedMonth, pickedDay)
                 },
                 year, month, day)
         x.show()
     }
     private fun openTimePicker(hour: Int, minute: Int) {
-        val date = DateTime()
         val x = TimePickerDialog(context,
                 TimePickerDialog.OnTimeSetListener { view, pickedHour, pickedMinute ->
-                    //todo
+                    viewModel.setTime(pickedHour, pickedMinute)
                 },
-                date.hourOfDay, date.minuteOfHour, true
+                hour, minute, true
         )
         x.show()
     }

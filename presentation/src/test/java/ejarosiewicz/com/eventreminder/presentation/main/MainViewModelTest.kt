@@ -115,7 +115,8 @@ class MainViewModelTest{
         private val DUMMY_EVENT_ID = 1920L
 
         private val DUMMY_EVENT = Event(
-                name = "Some name"
+                name = "Some name",
+                timestamp = 12423432
         )
         private val DUMMY_EVENT_LIST = listOf(DUMMY_EVENT)
     }

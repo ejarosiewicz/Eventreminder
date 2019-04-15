@@ -132,7 +132,7 @@ class AddEventViewModelTest {
 
         systemUnderTest.setDate(expectedYear, expectedMonth, expectedDay)
 
-        assertThat(systemUnderTest.eventDate).isEqualTo("$expectedYear-$expectedMonth-$expectedDay")
+        assertThat(systemUnderTest.eventDate.get()).isEqualTo("$expectedYear-$expectedMonth-$expectedDay")
     }
 
     @Test
@@ -142,7 +142,7 @@ class AddEventViewModelTest {
 
         systemUnderTest.setTime(expectedHour, expectedMinute)
 
-        assertThat(systemUnderTest.eventTime).isEqualTo("$expectedHour:$expectedMinute")
+        assertThat(systemUnderTest.eventTime.get()).isEqualTo("$expectedHour:$expectedMinute")
     }
 
     companion object {
@@ -153,6 +153,5 @@ class AddEventViewModelTest {
         const val SAMPLE_YEAR = 2173
         const val SAMPLE_HOUR = 12
         const val SAMPLE_MINUTE = 23
-
     }
 }
